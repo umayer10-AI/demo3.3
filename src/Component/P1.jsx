@@ -35,7 +35,7 @@ const P1 = () => {
     }
 
     const d = () => {
-        toast("Clicked");
+        toast.success(`Page ${c}`,{style:{backgroundColor: "black", color: "white"}})
     }
 
     const g = arr.map(v => <P2 key={v.id} p={v} b={b}></P2>)
