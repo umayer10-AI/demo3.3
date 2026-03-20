@@ -3,6 +3,7 @@ import axios from "axios"
 import P2 from './P2';
 import Modal from './Modal';
 import Pagination from '@mui/material/Pagination';
+import { ToastContainer, toast } from 'react-toastify';
 
 const P1 = () => {
 
@@ -33,6 +34,10 @@ const P1 = () => {
         document.getElementById('my_modal_5').showModal()
     }
 
+    const d = () => {
+        toast("Clicked");
+    }
+
     const g = arr.map(v => <P2 key={v.id} p={v} b={b}></P2>)
 
     if(loading) return <h1 className='text-3xl font-bold h-screen flex justify-center items-center'>Loading Information.....</h1>
@@ -40,7 +45,9 @@ const P1 = () => {
     return (
         <div className='mb-10 max-w-[90%] mx-auto'>
 
-            <div className='flex justify-center items-center my-10'>
+            <button onClick={d} className='btn btn-info mt-5'>Click</button>
+
+            <div className='flex justify-center items-center mb-10 mt-5'>
                 <Pagination count={10} size="large" page={c} onChange={(e, value) => setC(value)} sx={{
                 '& .MuiPaginationItem-root': {
                     color: 'white'
@@ -57,6 +64,8 @@ const P1 = () => {
                 }
             }} />
             </div>
+
+            <ToastContainer />
 
             <div className='flex justify-center flex-wrap gap-5 mb-10'>
                 {g.length===0 ? <h1 className='text-3xl font-bold my-30'>Data not Available</h1> : g}
